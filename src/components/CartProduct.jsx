@@ -11,7 +11,7 @@ const CartProduct = ({ itemGroup }) => {
 
   const handleRemoveAll = () => {
     dispatch(clearItems(item.id));
-    toast.success("All items removed");
+    toast.success("Group items removed");
   };
 
   const handleRemoveItem = () => {

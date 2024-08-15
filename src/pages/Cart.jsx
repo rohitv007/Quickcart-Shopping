@@ -1,11 +1,13 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { groupBy } from "lodash";
 import CartProduct from "../components/CartProduct";
 import { useState } from "react";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import { emptyCart } from "../app/slice/cart/cartSlice";
 
 const Cart = () => {
   const cart = useSelector((store) => store.cart);
+  const dispatch = useDispatch();
   const { items } = cart;
 
   // Group items by ID
@@ -38,8 +40,15 @@ const Cart = () => {
     });
   };
 
+  const clearCart = () => {
+    dispatch(emptyCart());
+  };
+
   const checkoutProducts = () => {
     // Checkout logic here
+    toast.success("Checkout Successful", {
+      icon: "🚀",
+    });
   };
 
   if (items.length === 0) {
@@ -74,33 +83,40 @@ const Cart = () => {
                 <span>${DISCOUNT}</span>
               </div>
             )}
-            <hr className="w-full mx-auto border-gray-400 border-t-2" />
-            <div className="text-2xl flex justify-end">
+            <div className="text-2xl flex justify-end border-y-2 border-gray-500 py-2">
               <span>Final:&nbsp;</span>
               <span className="font-bold">
                 ${isDiscount ? (cartPrice - DISCOUNT).toFixed(2) : cartPrice}
               </span>
             </div>
           </>
-          <div className="flex flex-col gap-3 items-center mt-6">
+          <div className="flex flex-col gap-3 items-center">
             <button
               onClick={toggleDiscount}
-              className="w-fit lg:w-fit bg-green-400 hover:bg-green-600 py-2 px-4 rounded-full transition-colors text-sm"
+              className="mt-2 mb-6 w-fit lg:w-fit bg-green-400 hover:bg-green-300 py-2 px-4 rounded-full transition-colors text-sm self-end"
               aria-label={isDiscount ? "Remove discount" : "Apply discount"}
             >
               {isDiscount ? "Remove Discount" : "Apply Discount ($10)"}
             </button>
             <button
               onClick={checkoutProducts}
-              className="w-[200px] sm:w-[350px] lg:w-full bg-yellow-300 hover:bg-yellow-500 py-2 px-4 rounded transition-colors font-semibold"
+              className="w-[200px] sm:w-[350px] lg:w-full bg-yellow-400 hover:bg-yellow-300 py-2 px-4 rounded transition-colors font-semibold"
               aria-label="Proceed to checkout"
             >
               Proceed to Buy ({totalQuantity}&nbsp;
               {totalQuantity === 1 ? `item` : `items`})
             </button>
+            <button
+              onClick={clearCart}
+              className="w-[200px] sm:w-[350px] lg:w-full bg-red-500 hover:bg-red-400 py-2 px-4 rounded transition-colors font-semibold"
+              aria-label="Proceed to checkout"
+            >
+              Empty Cart
+            </button>
           </div>
         </div>
       </div>
+      <Toaster position="bottom-right" />
     </div>
   );
 };
