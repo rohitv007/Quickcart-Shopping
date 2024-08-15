@@ -16,11 +16,11 @@ const Product = ({ product }) => {
 
   return (
     <>
-      <div className="flex flex-col items-center border border-gray-300 rounded-lg shadow-lg p-4 gap-y-2 bg-white hover:shadow-xl transition-shadow max-w-xs w-full">
+      <div className="flex flex-col items-center border border-gray-300 rounded-lg shadow-lg p-4 gap-y-2 bg-white hover:shadow-xl transition-shadow max-w-xs w-full h-[500px]">
         <div className="self-end text-gray-500 text-xs italic mb-2">
           {category}
         </div>
-        <div className="flex justify-center items-center mb-4">
+        <div className="flex justify-center items-center mb-4 flex-grow">
           <img
             className="w-full h-48 object-contain hover:scale-105 transition-transform"
             src={image}
@@ -28,10 +28,10 @@ const Product = ({ product }) => {
             alt={`${title} - ${category}`}
           />
         </div>
-        <div className="flex flex-col items-center text-center">
-          <span className="font-semibold text-base text-gray-800 line-clamp-2 mb-2">
+        <div className="flex flex-col items-center text-center flex-grow w-full">
+          <h3 className="font-semibold text-base text-gray-800 mb-2 h-12 overflow-hidden">
             {title}
-          </span>
+          </h3>
           <span className="font-bold text-xl text-blue-600 mb-2">${price}</span>
           <div className="flex items-center text-yellow-500 mb-2 gap-1">
             <span className="font-semibold text-sm mt-1">{rating.rate}</span>
@@ -40,7 +40,7 @@ const Product = ({ product }) => {
           </div>
         </div>
         <button
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition-colors"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition-colors mt-auto w-full"
           onClick={addToCart}
           aria-label={`Add ${title} to cart`}
         >
