@@ -5,14 +5,14 @@ import TwitterIcon from "../assets/TwitterIcon";
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-4">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-y-6 md:gap-y-0 px-8">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-y-2 md:gap-y-0 px-8">
         <div className="text-center md:text-left mb-6 md:mb-0">
           <h1 className="text-3xl font-bold">QuickCart</h1>
           <p className="text-gray-400 mt-2">
             Your favorite products, just a click away.
           </p>
         </div>
-        <div className="flex justify-center gap-x-6 mb-6 md:mb-0">
+        <div className="flex justify-center gap-x-6 md:mb-0">
           <a
             href="https://www.facebook.com"
             target="_blank"
@@ -40,7 +40,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center text-gray-400 mt-6">
-        © 2024 QuickCart. All rights reserved.
+        © {new Date().getFullYear()} QuickCart
       </div>
     </footer>
   );

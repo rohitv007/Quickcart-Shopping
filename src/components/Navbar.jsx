@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import CartIcon from "./CartIcon";
+import CartNavbar from "./CartNavbar";
 import UserIcon from "../assets/UserIcon";
 
 const Navbar = () => {
@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className="min-w-full container mx-auto flex justify-between items-center bg-gray-100 border-b border-gray-500 shadow-md p-4 px-6 sm:px-12 relative">
       <div className="flex items-center w-full md:w-auto">
-        <div className="block md:hidden mr-4">
+        <div className="flex items-center md:hidden mr-4">
           <button
             className="text-gray-700 hover:text-blue-500 transition-colors"
             onClick={toggleMenu}
@@ -35,7 +35,10 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
-        <Link to="/" className="text-gray-700 font-semibold text-lg md:text-xl">
+        <Link
+          to="/"
+          className="text-gray-700 font-semibold text-xl md:text-2xl"
+        >
           QuickCart
         </Link>
       </div>
@@ -102,13 +105,7 @@ const Navbar = () => {
         >
           <UserIcon />
         </Link>
-        <Link
-          to="/cart"
-          aria-label="View Cart"
-          className="hover:text-blue-500 transition-colors"
-        >
-          <CartIcon />
-        </Link>
+        <CartNavbar />
       </div>
     </nav>
   );

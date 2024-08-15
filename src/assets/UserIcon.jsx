@@ -5,7 +5,7 @@ const UserIcon = () => {
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
-      stroke="blue"
+      stroke="red"
       className="size-8"
     >
       <path

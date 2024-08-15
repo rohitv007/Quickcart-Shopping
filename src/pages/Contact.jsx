@@ -34,10 +34,10 @@ const Contact = () => {
 
   return (
     <div className="flex flex-col items-center p-4">
-      <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+      <h1 className="text-4xl font-semibold mb-4">Contact Us</h1>
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md"
+        className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md border border-gray-200"
       >
         <div className="mb-4">
           <label htmlFor="name" className="block text-sm font-medium mb-1">
