@@ -22,7 +22,7 @@ const Contact = () => {
 
     try {
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      setFormStatus("Form submitted successfully!");
+      setFormStatus("Thanks for the feedback!");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
       console.log(error.message);
@@ -39,7 +39,7 @@ const Contact = () => {
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md border border-gray-200"
       >
-        <div className="mb-4">
+        <div className="my-2">
           <label htmlFor="name" className="block text-sm font-medium mb-1">
             Name
           </label>
@@ -53,7 +53,7 @@ const Contact = () => {
             className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <div className="mb-4">
+        <div className="my-2">
           <label htmlFor="email" className="block text-sm font-medium mb-1">
             Email
           </label>
@@ -67,7 +67,7 @@ const Contact = () => {
             className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <div className="mb-4">
+        <div className="my-2">
           <label htmlFor="subject" className="block text-sm font-medium mb-1">
             Subject
           </label>
@@ -81,14 +81,14 @@ const Contact = () => {
             className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <div className="mb-4">
+        <div className="my-2">
           <label htmlFor="message" className="block text-sm font-medium mb-1">
             Message
           </label>
           <textarea
             id="message"
             name="message"
-            rows="2"
+            rows="3"
             value={formData.message}
             onChange={handleChange}
             required
@@ -106,7 +106,7 @@ const Contact = () => {
           {formStatus && (
             <span
               className={`ml-4 text-sm ${
-                formStatus.includes("success")
+                formStatus.includes("Thanks")
                   ? "text-green-500"
                   : "text-red-500"
               }`}

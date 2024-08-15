@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addItem } from "../app/slice/cart/cartSlice";
 import toast, { Toaster } from "react-hot-toast";
+import Rating from "./Rating";
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();
@@ -32,11 +33,10 @@ const Product = ({ product }) => {
             {title}
           </span>
           <span className="font-bold text-xl text-blue-600 mb-2">${price}</span>
-          <div className="flex items-center text-yellow-500 mb-2">
-            <span className="text-sm">{rating.rate}</span>
-            <sup className="ml-1 text-xs text-gray-500">
-              ({rating.count} reviews)
-            </sup>
+          <div className="flex items-center text-yellow-500 mb-2 gap-1">
+            <span className="font-semibold text-sm mt-1">{rating.rate}</span>
+            <Rating rating={rating.rate} />
+            <sup className="text-gray-500 text-xs">({rating.count})</sup>
           </div>
         </div>
         <button

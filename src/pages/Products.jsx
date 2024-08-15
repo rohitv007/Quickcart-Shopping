@@ -51,11 +51,11 @@ const Products = () => {
 
   return (
     <>
-      <div className="flex flex-wrap gap-4 justify-center mt-6 mb-4">
+      <div className="flex flex-wrap gap-4 justify-center mt-12 mb-8">
         {categories.map((catg) => (
           <span
             key={catg}
-            className={`px-4 py-2 rounded-full cursor-pointer capitalize transition-colors ${
+            className={`font-medium px-4 py-2 rounded-full cursor-pointer capitalize transition-colors ${
               activeCatg === catg
                 ? "bg-blue-500 text-white"
                 : "bg-gray-200 text-gray-800 hover:bg-blue-300"
