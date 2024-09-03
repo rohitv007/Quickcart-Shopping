@@ -2,12 +2,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import Product from "../components/Product";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Search } from "lucide-react";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [categories, setCategories] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [activeCatg, setActiveCatg] = useState("All");
 
   const fetchProducts = async () => {
@@ -30,32 +34,52 @@ const Products = () => {
     }
   };
 
-  const filteredProducts =
+  const categoryProducts =
     activeCatg === "All"
       ? products
       : products.filter((product) => product.category === activeCatg);
+
+  const filteredProducts = categoryProducts.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     fetchProducts();
   }, []);
 
   if (isLoading) return <Loader />;
+
   if (error)
     return <div className="text-red-600 text-center mt-4">{error}</div>;
-  if (products.length === 0)
+
+  if (products.length === 0) {
     return (
       <div className="text-gray-600 text-center mt-4">
         No products available.
       </div>
     );
+  }
 
   return (
-    <>
+    <div className="container mx-auto px-4 py-8 flex flex-col items-center">
+      <h1 className="text-3xl font-bold mb-8">Our Products</h1>
+      <div className="flex items-center mb-6 sm:w-3/4 w-full">
+        <Input
+          type="text"
+          placeholder="Search products..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="mr-2 text-lg"
+        />
+        <Button>
+          <Search className="h-6 w-6" />
+        </Button>
+      </div>
       <div className="flex flex-wrap gap-4 justify-center mt-12 mb-8">
         {categories.map((catg) => (
           <span
             key={catg}
-            className={`font-medium px-4 py-2 rounded-full cursor-pointer capitalize transition-colors ${
+            className={`text-sm font-medium px-4 py-2 rounded-full cursor-pointer capitalize transition-colors ${
               activeCatg === catg
                 ? "bg-blue-500 text-white"
                 : "bg-gray-200 text-gray-800 hover:bg-blue-300"
@@ -71,7 +95,7 @@ const Products = () => {
           <Product key={item.id} product={item} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
