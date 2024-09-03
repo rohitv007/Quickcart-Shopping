@@ -1,6 +1,6 @@
-# QuickCart Shopping App
+# QuickCart Shopping
 
-Welcome to the QuickCart Shopping App! This is a modern eCommerce application built with React and Redux Toolkit, designed to provide a seamless shopping experience.
+Welcome to the QuickCart Shopping! This is a modern eCommerce application built with React and Redux Toolkit, designed to provide a seamless shopping experience.
 
 ## Features
 
